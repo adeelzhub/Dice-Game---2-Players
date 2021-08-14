@@ -1,0 +1,65 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    /* background-color: rgba(253, 255, 252, 2); */
+    background-color: #f1faee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    background-color: cadetblue;
+    /* background-color: #111111; */
+    width: 800px;
+    height: 600px;
+    box-shadow: 0 9px 6px -6px grey;
+    border-radius: 3%;
+}
+#dice_score_name{
+    display: flex;
+}
+.players{
+    display: flex;
+    flex-direction: column;
+}
+.players{
+    
+    margin: 50px 100px 80px;
+    /* background-color: #eb6928; */
+}
+.score{
+    display: flex;
+    align-items: center;
+    
+}
+h4{
+    margin: 20px;
+}
+
+#roll{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    background-color: #04AA6D;
+    border: none;
+    box-shadow: 0 5px rgba(46, 49, 49, .5);
+}
+#roll:active{
+    background-color: #3e8e41;
+    box-shadow: 0 3px rgba(46, 49, 49, .3);
+    transform: translateY(4px);
+}
+#roll_dice{
+    text-align: center;
+}
