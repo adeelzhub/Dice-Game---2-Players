@@ -5,36 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/dice icon.png" type="image/x-icon">
     <title>Dice Game - 2 Players</title>
 </head>
 <body>
     <main>
-        <div id="headin">
-            <h1 id="win_loose" >Roll The Dice</h1>
+        <div id="heading">
+            <h2 id="win_loose" >Score 21 To Win<br>Hit 1 and you lose!</h2>
         </div>
-        <div id="dice_score_name">
+        <div>
+            <img id="dice" src="images/dice5.png" alt="Dice">
+        </div>
+        
+        <div id="score_name">
             <div id="player1" class="players">
-                <img id="dice_1" src="images/dice5.png" alt="Dice">
+                <h3 id="player_1" class="playerScore">Player 1</h3>
                 <div class="score">
-                    <h4 id="score1_label">Score:</h4>
-                    <p id="score1">0</p>
+                    <h3 id="score1_label" class="playerScore">Score:</h3>
+                    <p id="score1" class="playerScore">0</p>
                 </div>
-                <h4 id="player1_name">Player 1:</h4>
-                </div>
-            <div id="playr2" class="players">
-                <img id="dice_2" src="images/dice4.png" alt="Dice">
-                <div class="score">
-                    <h4 id="score2_label">Score:</h4>
-                    <p id="score2">0</p>
-                </div>
-                <h4 id="player2_name">Player 2:</h4>
             </div>
-
+            <div id="playr2" class="players">
+                <h3 id="player_2" class="playerScore">Player 2</h3>
+                <div class="score">
+                    <h3 id="score2_label" class="playerScore">Score:</h3>
+                    <p id="score2" class="playerScore">0</p>
+                </div>
+            </div>
         </div>
-    <div id="roll_dice">
-        <button id="roll">Roll</button>
-        <h3 id="turn">Player 1</h3>
-    </div>
+        <div id="buttons">
+            <div>
+                <button id="start">Start<br> New <br>Game</button>
+            </div>
+            <div>
+                <button id="hold">Hold</button>
+            </div>
+            <div id="roll_dice">
+                <button id="roll">Roll</button>
+                <h3 id="turn">Player 1</h3>
+            </div>
+        </div>
     </main>
     <script src="app.js"></script>
 </body>

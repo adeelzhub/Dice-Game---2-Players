@@ -1,120 +1,112 @@
 // Declaring variables
 
 
-const roll = document.getElementById("roll");
+const rollbtn = document.getElementById("roll");
+const hold = document.getElementById("hold")
+const start = document.getElementById("start")
 const turn = document.getElementById("turn");
-const dice_1 = document.getElementById("dice_1");
-const dice_2 = document.getElementById("dice_2");
+const dice = document.getElementById("dice");
 const score1 = document.getElementById("score1");
 const score2 = document.getElementById("score2");
-const player1_name = document.getElementById("player1_name");
-const player2_name = document.getElementById("player2_name");
+const player1 = document.getElementById("player_1");
+const player2 = document.getElementById("player_2");
 const win_loose =document.getElementById("win_loose");
 
-// adding events
+let rolled = 0;
 
-total_score1 = 0;
-total_score2 = 0;
+let switchTurn = [{
+    player: "Player 1",
+    total_score: 0
+},
+{
+    player: "Player 2",
+    total_score: 0
+}]
 
-// Reset game - function
-
-function reset(){
-    roll.textContent = "Roll"
-    score1.textContent = 0;
-    score2.textContent = 0;
-    total_score1 = 0;
-    total_score2 = 0;
-    turn.textContent = "Player 1"
-    win_loose.textContent = "Start Game!"
-    turn.style.visibility = "visible";
-}
-
-// Who is a winner - function
 
 function winner(){
-    if(total_score1 >= 21){
-        win_loose.textContent = "Player 1 Won!";
-        roll.textContent = "Reset";
+    if(switchTurn[0].total_score >= 21){
+        win_loose.textContent = `${switchTurn[0].player} Won! `
+        rollbtn.textContent = "Game End";
         turn.style.visibility = "hidden";
-    }else if(total_score2 >= 21){
-        win_loose.textContent = "Player 2 Won!";
-        roll.textContent = "Reset";
-        turn.style.visibility = 'hidden';
-
-    }else{
-        win_loose.textContent = win_loose.textContent;
+        
     }
 }
 
-// Whose turn - function
-
-// function whoseTurn(){
-//     if(turn.textContent == "Player 1"){
-//         turn.textContent = "Player 2";
-//     }else{
-//         turn.textContent = "Player 1";
-//     }
-// }
-
-// dice roll - function
-
-function diceRoll(){
-    let diceRoll = [1,2,3,4,5,6];
-    let rolled = diceRoll[Math.floor(Math.random()*6)];
-    return rolled;
-}
-
-// A player rolled 1 - function
+// Rolled 1 - function
 
 function rolled1(){
-    if(turn.textContent == "Player 1"){
-        win_loose.textContent = "Player 2 Won because the other Player Rolled 1!";
-        roll.textContent = "Reset";
-        turn.style.visibility = 'hidden';
-    }else{
-        win_loose.textContent = "Player 1 Won because the other player Rolled 1!";
-        roll.textContent = "Reset";
-        turn.style.visibility = 'hidden';
-    }
-
-
+    win_loose.textContent =`${switchTurn[1].player} Won!`
+    turn.style.visibility = "hidden";
+    rollbtn.textContent = "Game End";
 }
 
-// Click roll(Button) - Event
+// Dice Rolled - function
 
-roll.addEventListener("click",()=>{
-    if(roll.textContent == "Reset"){
-        reset();
-    }else{  
-            diceRolled = diceRoll();
-            if(turn.textContent == "Player 1"){  
-                dice_1.src =`images/dice${diceRolled}.png`;
-                total_score1 += diceRolled;
-                score1.textContent = total_score1;
-                win_loose.textContent = `Player 1 Rolled ${diceRolled}`
-                if(diceRolled !== 1){
-                    // whoseTurn();
-                    turn.textContent = "Player 2"
-                    winner();
-                }else{
-                    rolled1();
-                }    
-            }else{
-                dice_2.src =`images/dice${diceRolled}.png`;
-                total_score2 += diceRolled;
-                score2.textContent = total_score2;
-                win_loose.textContent = `Player 2 Rolled ${diceRolled}`
-                if(diceRolled !== 1){
-                    // whoseTurn();
-                    turn.textContent = "Player 1"
-                    winner();
-                }else{
-                    rolled1();
-                }    
-            }
-            
-}})
+function diceRolled(){
+    let dice = [1,2,3,4,5,6];
+    rolled = dice[Math.floor(Math.random()*6)];
+}
+
+// Update score - function
+
+function updateScore(){
+    if(switchTurn[0].player == "Player 1"){
+        score1.textContent = switchTurn[0].total_score;
+    }else{
+        score2.textContent = switchTurn[0].total_score
+    }
+}
+
+// hold - function
+
+function holdTurn(){
+    switchTurn.reverse()
+    turn.textContent = switchTurn[0].player
+}
+
+// restart - function
+
+function restart(){
+    switchTurn[0].player = "Player 1";
+    switchTurn[1].player = "Player 2"
+    switchTurn[0].total_score = 0;
+    switchTurn[1].total_score = 0;
+    score1.textContent = 0;
+    score2.textContent = 0;
+    rollbtn.textContent = "Roll"
+    win_loose.textContent = "Roll the dice"
+    turn.style.visibility = "visible"
+    turn.textContent = "Player 1";
+}
+
+rollbtn.addEventListener("click",()=>{
+    if(rollbtn.textContent == "Game End"){
+        alert("Start New Game")
+    }else{
+        diceRolled()
+        dice.src = `images/dice${rolled}.png`;
+        if (rolled == 1 && switchTurn[0].total_score == 0){
+            switchTurn.reverse();
+            turn.textContent = switchTurn[0].player;
+        }else if(rolled == 1 && switchTurn[0].total_score != 0 ){
+            rolled1();
+        }else{
+            switchTurn[0].total_score += rolled;
+            updateScore();
+            winner();
+        }
+
+    }
+
+    })
 
 
+hold.addEventListener("click",()=>{
+    holdTurn()
+})
 
+start.addEventListener("click",()=>{
+    restart();
 
+})

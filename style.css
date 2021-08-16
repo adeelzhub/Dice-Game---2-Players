@@ -1,10 +1,14 @@
 *{
     box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
 body{
     height: 100vh;
-    /* background-color: rgba(253, 255, 252, 2); */
-    background-color: #f1faee;
+    background-image: url(images/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,35 +16,95 @@ body{
 main{
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    background-color: cadetblue;
-    /* background-color: #111111; */
+    background-image: url(images/boxes1.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 800px;
     height: 600px;
-    box-shadow: 0 9px 6px -6px grey;
-    border-radius: 3%;
 }
-#dice_score_name{
+#heading{
+    height: 100px;
+    width: 193px;
+}
+#win_loose{
+    margin-top: 30px;
+    text-align: center;
+}
+#dice{
+    margin-top: 10px;
+}
+
+#score_name{
     display: flex;
+    width: 100%;
+    justify-content: space-around;
 }
 .players{
     display: flex;
     flex-direction: column;
+    
 }
 .players{
     
-    margin: 50px 100px 80px;
-    /* background-color: #eb6928; */
+    margin: 30px 160px 10px;
 }
 .score{
     display: flex;
     align-items: center;
     
 }
-h4{
-    margin: 20px;
+.playerScore{
+    margin-left: 0px;
+    font-weight: bold;
+}
+h3{
+    margin: 10px;
+}
+#buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -30px;
+}
+#start{
+    height: 55px;
+    width: 55px;
+    margin: 5px;
+    font-weight: bold;
+    border:none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgb(9, 87, 117);
+    border: none;
+    box-shadow: 0 5px rgba(46, 49, 49, .5);
+    
+}
+#start:active{
+    background-color: rgb(5, 77, 105);
+    box-shadow: 0 2px rgba(46, 49, 49, .3);
+    transform: translateY(4px);
+}
+#hold{
+    margin: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgb(9, 87, 117);
+    border: none;
+    box-shadow: 0 5px rgba(46, 49, 49, .5);
+}
+#hold:active{
+    background-color: rgb(5, 77, 105);
+    box-shadow: 0 2px rgba(46, 49, 49, .3);
+    transform: translateY(4px);
 }
 
 #roll{
@@ -51,13 +115,13 @@ h4{
     text-align: center;
     cursor: pointer;
     color: #fff;
-    background-color: #04AA6D;
+    background-color: rgb(9, 87, 117);
     border: none;
     box-shadow: 0 5px rgba(46, 49, 49, .5);
 }
 #roll:active{
-    background-color: #3e8e41;
-    box-shadow: 0 3px rgba(46, 49, 49, .3);
+    background-color: rgb(5, 77, 105);
+    box-shadow: 0 2px rgba(46, 49, 49, .3);
     transform: translateY(4px);
 }
 #roll_dice{
